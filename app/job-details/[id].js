@@ -46,20 +46,20 @@ const JobDetails = () => {
         return (
           <Specifics
             title='Qualifications'
-            points={data[0].job_highlights?.Qualifications ?? ["N/A"]}
+            points={data[0]?.job_highlights?.Qualifications ?? ["N/A"]}
           />
         );
 
       case "About":
         return (
-          <JobAbout info={data[0].job_description ?? "No data provided"} />
+          <JobAbout info={data[0]?.job_description ?? "No data provided"} />
         );
 
       case "Responsibilities":
         return (
           <Specifics
             title='Responsibilities'
-            points={data[0].job_highlights?.Responsibilities ?? ["N/A"]}
+            points={data[0]?.job_highlights?.Responsibilities ?? ["N/A"]}
           />
         );
 
@@ -103,10 +103,10 @@ const JobDetails = () => {
           ) : (
             <View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
               <Company
-                companyLogo={data[0].employer_logo}
-                jobTitle={data[0].job_title}
-                companyName={data[0].employer_name}
-                location={data[0].job_country}
+                companyLogo={data[0]?.employer_logo}
+                jobTitle={data[0]?.job_title}
+                companyName={data[0]?.employer_name}
+                location={data[0]?.job_country}
               />
 
               <JobTabs
@@ -120,7 +120,7 @@ const JobDetails = () => {
           )}
         </ScrollView>
 
-        <JobFooter url={data[0]?.job_google_link ?? 'https://careers.google.com/jobs/results/'} />
+        <JobFooter url={data[0]?.job_apply_link ?? 'https://careers.google.com/jobs/results/'} />
       </>
     </SafeAreaView>
   );

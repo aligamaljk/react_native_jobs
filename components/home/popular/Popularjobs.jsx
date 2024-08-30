@@ -17,7 +17,9 @@ const Popularjobs = () => {
   const router = useRouter();
   const { data, isLoading, error } = useFetch("search", {
     query: "React developer",
-    num_pages: "1",
+    page: '1',
+    num_pages: '1',
+    date_posted: 'all'
   });
 
   const [selectedJob, setSelectedJob] = useState();
@@ -51,9 +53,10 @@ const Popularjobs = () => {
                 handleCardPress={handleCardPress}
               />
             )}
-            keyExtractor={(item) => item.job_id}
+            keyExtractor={(item) => item?.job_id}
             contentContainerStyle={{ columnGap: SIZES.medium }}
             horizontal
+            // showsHorizontalScrollIndicator={false}
           />
         )}
       </View>

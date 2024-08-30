@@ -22,19 +22,33 @@ const JobSearch = () => {
         setSearchResult([])
 
         try {
+            // const options = {
+            //     method: "GET",
+            //     url: `https://jsearch.p.rapidapi.com/search`,
+            //     headers: {
+            //         "X-RapidAPI-Key": '',
+            //         "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
+            //     },
+            //     params: {
+                    // query: params.id,
+                    // page: page.toString(),
+            //     },
+            // };
             const options = {
-                method: "GET",
-                url: `https://jsearch.p.rapidapi.com/search`,
-                headers: {
-                    "X-RapidAPI-Key": '',
-                    "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
-                },
+                method: 'GET',
+                url: 'https://jsearch.p.rapidapi.com/search',
                 params: {
-                    query: params.id,
-                    page: page.toString(),
+                  query: params.id,
+                  // query: "Frontend developer",
+                  page: page.toString(),
+                  num_pages: '1',
+                  date_posted: 'all'
                 },
-            };
-
+                headers: {
+                  'x-rapidapi-key': '4e359a8542msh2a6984ae51b3750p1d5eafjsnb11aab0e270d',
+                  'x-rapidapi-host': 'jsearch.p.rapidapi.com'
+                }
+              };
             const response = await axios.request(options);
             setSearchResult(response.data.data);
         } catch (error) {
